@@ -138,7 +138,7 @@ h1 {
 
 #main::before {
     content: "";
-    background-image: url('/Assets/Snow.jpg');
+    background-image: url('../Assets/Snow.jpg');
     background-size: cover;
     position: absolute;
     top: 0px;
