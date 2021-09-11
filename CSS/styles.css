@@ -8,6 +8,7 @@
     --white: #FFFFFF;
     --dark: #333333;
 
+    --font-12px: 0.75rem;
     --font-14px: 0.875rem;
     --font-18px: 1.125rem;
     --font-24px: 1.5rem;
@@ -26,7 +27,7 @@ body {
 main {
     display: grid;
     grid-template-columns: 250px 1fr;
-    grid-template-rows: 440px 1fr;
+    grid-template-rows: 450px 1fr;
 }
 
 #blurred-bar {
@@ -96,8 +97,7 @@ h1 {
     margin: auto;
 }
 
-#weather-details-other {
-    margin-bottom: 20px;
+#weather-details-other {    
     text-align: center;
     color: var(--light);
     font-family: var(--azerat-font);    
@@ -113,13 +113,22 @@ h1 {
     justify-content: space-between;
 }
 
+#attribution {
+    font-size: var(--font-12px);
+    text-decoration: none;
+    color: var(--light);
+    opacity: 0.3;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
 .details p{
     margin: 8px 0px;
  }
 
 #main {
     position: relative;
-    height: 100vh;
+    height: auto;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     display: grid;
