@@ -17,67 +17,67 @@ const emoji = {
 
 const images = {   
         Clouds: {
-            img: 'url(../Assets/Clouds.jpg)',
+            img: 'url(Assets/Clouds.jpg)',
             attrText: 'Tree Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/tree'
         },
         Rain: {
-            img: 'url(../Assets/Rain.jpg)',
+            img: 'url(Assets/Rain.jpg)',
             attrText: 'Nature Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/nature'
         },
         Thunderstorm: {
-            img: 'url(../Assets/Thunderstorm.jpg)',
+            img: 'url(Assets/Thunderstorm.jpg)',
             attrText: 'Nature Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/nature'
         },
         Snow: {
-            img: 'url(../Assets/Snow.jpg)',
+            img: 'url(Assets/Snow.jpg)',
             attrText: 'Weather Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/weather'
         },
         Clear: {
-            img: 'url(../Assets/Clear.jpg)',
+            img: 'url(Assets/Clear.jpg)',
             attrText: 'Cloud Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/cloud'
         },
         Drizzle: {
-            img: 'url(../Assets/Rain.jpg)',
+            img: 'url(Assets/Rain.jpg)',
             attrText: 'Nature Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/nature'
         },
         Squal: {
-            img: 'url(../Assets/Rain.jpg)',
+            img: 'url(Assets/Rain.jpg)',
             attrText: 'Nature Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/nature'
         },
         Smoke: {
-            img: 'url(../Assets/Smoke.jpg)',
+            img: 'url(Assets/Smoke.jpg)',
             attrText: 'Nature Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/nature'
         },
         Mist: {
-            img: 'url(../Assets/Mist.jpg)',
+            img: 'url(Assets/Mist.jpg)',
             attrText: 'Mist Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/mist'
         },
         Haze: {
-            img: 'url(../Assets/Haze.jpg)',
+            img: 'url(Assets/Haze.jpg)',
             attrText: 'Haze Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/haze'
         },
         Dust: {
-            img: 'url(../Assets/Dust.jpg)',
+            img: 'url(Assets/Dust.jpg)',
             attrText: 'Vector Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/vector'
         },
         Ash: {
-            img: 'url(../Assets/Smoke.jpg)',
+            img: 'url(Assets/Smoke.jpg)',
             attrText: 'Nature Vectors by Vecteez',
             attrHref: 'https://www.vecteezy.com/free-vector/nature'
         },
         Tornado: {
-            img: 'url(../Assets/Tornado.jpg)',
+            img: 'url(Assets/Tornado.jpg)',
             attrText: 'Rain Landscape Vectors by Vecteezy',
             attrHref: 'https://www.vecteezy.com/free-vector/rain-landscape'
         }
