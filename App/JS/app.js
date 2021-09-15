@@ -127,7 +127,10 @@ let userCity = ``,
     long,
     latAndLong,
     forecastTemp = [],        
-    forecastCondition= [];
+    forecastCondition= [],
+    foreCastDay = [],
+    foreCastDate = [],
+    foreCastMonth = [];
 
 
 // Fills all the main data on the page
@@ -184,23 +187,37 @@ let changeBackground = (data) => {
      }
 }
 
+
+
+
 // Get forecast temp and condition
 const getForecast = async (url, location, units, key) => {
     try {
         const resp = await fetch(url+location+units+key);
         const data = await resp.json();
-        const forecastDay = document.querySelectorAll('.forecast-day'),
-              forecastDate = document.querySelectorAll('.forecast-date');
-        forecastTemp = [];
-        forecastCondition = [];
+        // Resets all array data
+        forecastTemp = [],        
+        forecastCondition= [],
+        foreCastDay = [],
+        foreCastDate = [],
+        foreCastMonth = [];
     
          for (let i = 1; i < data.list.length; i++) {
-            if (i % 7 === 0) {                
-                forecastTemp.push(Math.round(data.list[i].main.temp));                
-                forecastCondition.push(data.list[i].weather[0].main);
+            if (i % 7 === 0) {               
+                const timeStamp = data.list[i].dt,
+                      date = new Date(timeStamp * 1000),
+                      day = date.getDay(),
+                      dateNum = date.getDate(),   
+                      month = date.getMonth();
 
+                foreCastMonth.push(month);
+                foreCastDate.push(dateNum);     
+                foreCastDay.push(day);                    
+                forecastTemp.push(Math.round(data.list[i].main.temp));                
+                forecastCondition.push(data.list[i].weather[0].main);        
             };
-        };      
+        };     
+
     }
     catch (error) {
         console.log('error', error);
@@ -210,8 +227,18 @@ const getForecast = async (url, location, units, key) => {
 // Fills all the forecast data on the page
 const inputForecastData = () => {
     const forecastCardTemp = document.querySelectorAll('.forecast-temp'),        
-          emojiCard = document.querySelectorAll('.emoji-forecast');        
+          emojiCard = document.querySelectorAll('.emoji-forecast'),
+          forecastCardDay = document.querySelectorAll('.forecast-day'),
+          forecastCardDate = document.querySelectorAll('.forecast-date');;        
         
+        forecastCardDate.forEach(function(el, i) {            
+            el.innerHTML = `${months[foreCastMonth[i]]}, ${foreCastDate[i]}`;
+        });
+
+        forecastCardDay.forEach(function(el, i) {            
+            el.innerHTML = `${daysOfWeek[foreCastDay[i]]}`;
+        });
+
         forecastCardTemp.forEach(function(el, i) {            
             el.innerHTML = `${forecastTemp[i]}°C`;
         });
