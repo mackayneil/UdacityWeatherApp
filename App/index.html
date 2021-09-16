@@ -16,13 +16,13 @@
         <section id="blurred-bar">
             <h1>Weather app</h1>
             <form action="">
-                <label for="zip-code">Zip code:</label> 
-                <input class="input-field" type="number" name="zip-code" id="zip-code" placeholder="Enter zip code here">    
+                <label for="zip">Zip code:</label> 
+                <input class="input-field" type="number" name="zip" id="zip" placeholder="Enter zip code here">    
                 <p id="error-msg"></p>
                 <label for="feelings">Enter how you’re feeling:</label>        
                 <input class="input-field" type="text" name="feelings" id="feelings" placeholder="How are you feeling?" maxlength="10">
                 <br/>
-               <input id="submit-btn" type="submit" value="Submit">
+               <input id="generate" type="submit" value="Submit">
             </form>
             <div id="weather-details-other">
                 <hr>
@@ -48,12 +48,12 @@
         </section>
 
         <section id="main">
-            <div id="main-details">
+            <div id="entryHolder">
                 <div id="weather-details-main">
-                    <h2 id="temperature">...</h2>
+                    <h2 id="temp">...</h2>
                     <div id="conditions-container">
                         <p id="condition"><span class="emoji"></span></p>
-                        <p id="feelings-ouput"></p>
+                        <p id="content"></p>
                     </div>               
                 </div>
                 <div id="place-date-container">

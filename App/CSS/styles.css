@@ -112,7 +112,7 @@ h1 {
     padding-top: 4px;
 }
 
-#submit-btn {
+#generate {
     width: 90px;
     height: 32px;
     border-radius: 8px;
@@ -175,7 +175,7 @@ h1 {
     grid-row: 1 /-1;
 }
 
-#main-details {
+#entryHolder {
     position: relative;
     grid-column: 1 / -1;
     grid-row: 2 / span 1;
@@ -321,7 +321,7 @@ h1 {
        margin: 16px 0px;
     }
 
-    #main-details {
+    #entryHolder {
         grid-column: 2 / -1;
         grid-row: 1 / span 1;
         margin-top: 40px;
@@ -396,7 +396,7 @@ h1 {
         grid-template-rows: 140px 1fr 1fr;
     }
 
-    #main-details {
+    #entryHolder {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -417,7 +417,7 @@ h1 {
         max-width: 1200px;
     }
 
-    #main-details {
+    #entryHolder {
         max-width: 1200px;
     }
     .forecast {

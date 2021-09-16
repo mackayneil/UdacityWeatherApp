@@ -112,12 +112,12 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather?',
       metric = '&units=metric',
       imperial = '&units=imperial',
       apiKey = '&appid=42da4e6b48597278286170dfa8d9c149',
-      submitBtn = document.querySelector('#submit-btn'),
+      submitBtn = document.querySelector('#generate'),
       humidity = document.querySelector('#humidity'),
       windSpeed = document.querySelector('#wind-speed'),
       pressure = document.querySelector('#pressure'),
       feelsLike = document.querySelector('#feels-like'),
-      temperature = document.querySelector('#temperature'),
+      temperature = document.querySelector('#temp'),
       city = document.querySelector('#city'),
       country = document.querySelector('#country'),
       condition = document.querySelector('#condition');
@@ -160,7 +160,6 @@ const getLocation = async (url, location, units, key) => {
             userCity = data.name;                  
             return data;
         }        
-        
     }
     catch (error) {
         console.log('error', error);
@@ -290,18 +289,17 @@ findUserLocation()
 // Outputs user's feelings data
 const getFeelings = () => {
     const feelingInput = document.querySelector('#feelings').value.toLowerCase(),
-          feelginsOutput = document.querySelector('#feelings-ouput');
+          feelginsOutput = document.querySelector('#content');
     if (feelingInput !== '') {
         feelginsOutput.innerHTML = `And you're feeling ${feelingInput}`;     
     }      
           
 }
 
-
-// Gets weather data from user zip code
-submitBtn.addEventListener('click', function(e) {
+// Gets weather data from API
+const getWeather = (e) => {
     e.preventDefault()
-    const zipCodeInput = `zip=` + document.querySelector('#zip-code').value;
+    const zipCodeInput = `zip=` + document.querySelector('#zip').value;
 
     getLocation(baseURL, zipCodeInput, metric, apiKey)
     .then(function(val) {        
@@ -311,7 +309,10 @@ submitBtn.addEventListener('click', function(e) {
         return inputForecastData();
     });
     getFeelings();
-})
+};
+
+// Gets weather data from user zip code
+submitBtn.addEventListener('click', getWeather);
 
 
 
