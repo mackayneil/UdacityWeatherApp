@@ -1,6 +1,3 @@
-// Empty object to act as an endpoint for all routes
-let projectData = {};
-
 // Express, used to run server and routes
 const express = require('express');
 
@@ -16,12 +13,9 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance 
 const cors = require('cors');
-const { ppid } = require('process');
 app.use(cors());
 
-// Initialise the main project folder
-app.use(express.static('App'));
-
+// Defines the port number 
 const port = 8000;
 
 // Spin up the server
@@ -33,26 +27,35 @@ function listening() {
     console.log(`Server is running on ${port}`);
 }
 
+// Initialise the main project folder
+app.use(express.static('App'));
+
+
+// Empty object to act as an endpoint for all routes
+let appData = {};
+
 // Routes
-// GET route
-app.get('/all', sendData);
 
-function sendData (req, resp) {   
-    resp.send(projectData)
-} 
+// GET request
+app.get('/all', function (request, response) {
+    response.send(appData);  
+  });
 
-// POST route
-app.post('/add', callBack);
 
-function callBack (req, resp) {
-    resp.send('POST recieved')
-}
+app.post('/add', function ( request ,response ) {
+    response.send('POST received');
+  });
 
-// Post an animal
+// POST request
 const data = [];
-app.post('/addMovie', addMovie);
-
-function addMovie (req, resp) {
+app.post('/addData', function (request, response) {
+    data.push(request.body);
+    appData["answer"]= request.body.answer;
+    console.log(`this is body`);
+    console.log(request.body);
+    console.log(`this is appData`);
+    console.log(appData);
+    console.log(`this is data`);
     console.log(data);
-    data.push(req.body)
-}
+})
+
