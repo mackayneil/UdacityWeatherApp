@@ -107,6 +107,8 @@ const months = [
     'Dec'
 ];
 
+
+
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?',
       foreCastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=',
       metric = '&units=metric',
@@ -265,7 +267,7 @@ const findUserLocation = () => {
 // Function that hides loading screen
 const hideLoading = () => {
     const loadingScreen = document.querySelector('#loading-screen');
-    loadingScreen.classList.add('d-none')
+    loadingScreen.classList.add('d-none');
 };
 
 
@@ -288,13 +290,57 @@ findUserLocation()
 
 // Outputs user's feelings data
 const getFeelings = () => {
-    const feelingInput = document.querySelector('#feelings').value.toLowerCase(),
-          feelginsOutput = document.querySelector('#content');
-    if (feelingInput !== '') {
-        feelginsOutput.innerHTML = `And you're feeling ${feelingInput}`;     
-    }      
-          
+    const feelingInput = document.querySelector('#feelings').value.toLowerCase();    
+    if (feelingInput !== '') {        
+         return feelingInput
+    }            
 }
+
+// Retrieves the user input
+const postData = async ( url='', data = {}) => {
+    const response = await fetch(url, {
+        method: 'POST', 
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+    },
+        body: JSON.stringify(data), 
+    });
+
+    try {
+        const newData = await response.json();
+        console.log(newData);
+        return newData;
+    } catch(error) {
+        console.log('error', error);
+    }
+}
+
+
+const postGet = () => {
+    let feeling = getFeelings();       
+    postData('/addData', {answer: feeling})
+      .then(function(data){  
+        retrieveData('/all')
+      })
+      updateUI();
+  }
+    
+
+// Updates the page with the user input
+const updateUI = async () => {
+    const request = await fetch('/all');
+    try {
+        const allData = await request.json();
+        const feelingsOutput = document.querySelector('#content');
+        if (allData.answer !== undefined) {
+            feelingsOutput.innerHTML = `And you're feeling ${allData.answer}`;
+        }        
+    } catch(error) {
+        console.log('error', error);
+    }
+ }
+
 
 // Gets weather data from API
 const getWeather = (e) => {
@@ -308,7 +354,7 @@ const getWeather = (e) => {
     .then(function(val) {    
         return inputForecastData();
     });
-    getFeelings();
+    postGet();
 };
 
 // Gets weather data from user zip code
@@ -328,5 +374,7 @@ let displayDate = () => {
           date.innerHTML = `${daysOfWeek[dayOfWeek]}, ${months[month]} ${dayNum} ${year}`; 
 }
 displayDate();
+
+
 
 
