@@ -287,10 +287,10 @@ const hideLoading = () => {
 // Envokes Promise, then hides loading screen
 findUserLocation()
 .then(function(val){  
-   return getLocation(baseURL, latAndLong, metric, APIKEY); 
+   return getLocation(baseURL, latAndLong, metric, apiKey); 
 })
 .then (function(val) {
-    return getForecast(foreCastURL, `${userCity}`, metric, APIKEY);
+    return getForecast(foreCastURL, `${userCity}`, metric, apiKey);
 })
 .then(function(val) {
     return inputForecastData();
@@ -358,9 +358,9 @@ const getWeather = (e) => {
     e.preventDefault()
     const zipCodeInput = `zip=` + document.querySelector('#zip').value;
 
-    getLocation(baseURL, zipCodeInput, metric, APIKEY)
+    getLocation(baseURL, zipCodeInput, metric, apiKey)
     .then(function(val) {        
-        return getForecast(foreCastURL, `${userCity}`, metric, APIKEY);
+        return getForecast(foreCastURL, `${userCity}`, metric, apiKey);
     })
     .then(function(val) {    
         return inputForecastData();
