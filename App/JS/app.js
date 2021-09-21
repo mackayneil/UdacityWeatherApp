@@ -12,7 +12,6 @@ const emoji = {
     Dust: `🌫`,
     Ash: `💨`,
     Tornado: `🌪`
-
 }
 
 const images = {   
