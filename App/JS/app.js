@@ -122,7 +122,8 @@ const baseURL = 'https://api.openweathermap.org/data/2.5/weather?',
       temperature = document.querySelector('#temp'),
       city = document.querySelector('#city'),
       country = document.querySelector('#country'),
-      condition = document.querySelector('#condition');
+      condition = document.querySelector('#condition'),
+      loadingScreen = document.querySelector('#loading-screen');;
 
 let userCity = ``,
     lat,
@@ -248,25 +249,36 @@ const inputForecastData = () => {
         });
 };
 
-
+// Find co-ords
+let findUserCords = () => {
+   
+}
 
 // Promise function that gets users location from co-ords
 const findUserLocation = () => {
    return new Promise(function(resolve, reject) {
     window.addEventListener('load', function() {
-        navigator.geolocation.getCurrentPosition(function(position) {
+          if(!navigator.geolocation) {
+            loadingScreen.innerHTML = `Geolocation is not supported by your browser`; 
+          } else {           
+            navigator.geolocation.getCurrentPosition(success, error);
+          }                   
+    }); 
+    function error() {
+        hideLoading();        
+       }
+    function success(position) {   
             lat = position.coords.latitude,
-            long = position.coords.longitude,
-            latAndLong = `lat=${lat}&lon=${long}`;           
-            resolve();           
-          });
-    })
+            long = position.coords.longitude,        
+            latAndLong = `lat=${lat}&lon=${long}`;  
+            resolve(`worked`);       
+        }
    })
+  
 };
 
 // Function that hides loading screen
-const hideLoading = () => {
-    const loadingScreen = document.querySelector('#loading-screen');
+const hideLoading = () => { 
     loadingScreen.classList.add('d-none');
 };
 
@@ -286,7 +298,6 @@ findUserLocation()
 .then(function(val) {
    return hideLoading(val); 
 })
-
 
 // Outputs user's feelings data
 const getFeelings = () => {
