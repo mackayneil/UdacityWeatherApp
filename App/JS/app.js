@@ -1,5 +1,3 @@
-import { apiKey } from './config.js';
-
 const emoji = {
     Clouds: `☁️`,
     Rain: `🌦`,
@@ -113,7 +111,8 @@ const months = [
 
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?',
       foreCastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=',
-      metric = '&units=metric',               
+      metric = '&units=metric',     
+      apiKey = config.apiKey,  
       submitBtn = document.querySelector('#generate'),
       humidity = document.querySelector('#humidity'),
       windSpeed = document.querySelector('#wind-speed'),
